@@ -18,14 +18,19 @@ const AvailableAppointments = ({ selectedDate }) => {
             <h2 className='text-center text-primary font-bold my-5'>Available Appointments on {format(selectedDate, "PP")}</h2>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
                 {
-                    appointmentOptions.map((appointmentOption) => <AppointmentOptions
+                    appointmentOptions.map((appointmentOption, index) => <AppointmentOptions
+                        key={index}
                         appointmentOption={appointmentOption}
                         setTreatment={setTreatment}
 
                     />)
                 }
             </div>
-            { treatment && <BookingModal treatment={treatment} />}
+            { treatment && <BookingModal 
+                treatment={treatment}
+                selectedDate={selectedDate}
+                setTreatment={setTreatment}
+             />}
         </div>
     );
 };
